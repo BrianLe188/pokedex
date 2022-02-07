@@ -12,7 +12,6 @@ import {
 import { selectPoke, searchPoke, getPoke } from '../../features/pokeSlice'
 import { Outlet } from 'react-router-dom'
 import ModalProvider from '../../contexts/ModalContext'
-import ModalContainer from '../../components/ModalContainer/ModalContainer'
 
 const Home = () => {
     const dispatch = useAppDispatch()
