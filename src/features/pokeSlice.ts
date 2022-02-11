@@ -4,7 +4,7 @@ import { NameNUrl, PokemonApi } from '../types/types4poke'
 import { Pokeapi } from '../apis/pokeapi'
 import axios from 'axios'
 
-interface InitialState {
+export interface InitialState {
     pokemon: PokemonApi
 }
 
@@ -39,11 +39,7 @@ const pokeSlice = createSlice({
     name: 'poke',
     initialState,
     reducers: {
-        // get a parameter as input
-        // use this input to filter from state.pokemon.results all pokemon have same input
-        // use toLowerCase to be case insensitive
-        // assign state.pokemon with a new state including old properties and new results properties
-        searchPoke: (state, action: { payload: string; type: string }) => {
+        /*searchPoke: (state, action: { payload: string; type: string }) => {
             const filterPoke: NameNUrl[] = state.pokemon.results.filter(
                 (poke: NameNUrl) =>
                     poke.name
@@ -51,7 +47,7 @@ const pokeSlice = createSlice({
                         .includes(action.payload.toLowerCase())
             )
             state.pokemon = { ...state.pokemon, results: filterPoke }
-        },
+        },*/
     },
     extraReducers: builder => {
         builder
@@ -80,7 +76,7 @@ const pokeSlice = createSlice({
 
 const pokeReducer = pokeSlice.reducer
 
-export const { searchPoke } = pokeSlice.actions
+export const {} = pokeSlice.actions
 
 export const selectPoke = (state: RootState) => state.pokeReducer
 

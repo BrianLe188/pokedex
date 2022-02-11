@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import { Theme } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import {
+    SearchContext,
+    SearchContextDefault,
+} from '../../contexts/SearchContext'
 
 interface SearchFieldProps {
     handleSubmitInput?: (value: string) => void

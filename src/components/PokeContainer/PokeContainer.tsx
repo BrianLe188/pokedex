@@ -1,23 +1,35 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Grid } from '@mui/material'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import { selectPoke, getPoke } from '../../features/pokeSlice'
-import { selectPokeCard } from '../../features/pokeCardSlice'
+import { selectPoke, getPoke, InitialState } from '../../features/pokeSlice'
+import {
+    selectPokeCard,
+    InitialState as InitialStateCard,
+} from '../../features/pokeCardSlice'
 import PokeList from '../PokeList/PokeList'
+import { NameNUrl } from '../../types/types4poke'
+import {
+    SearchContext,
+    SearchContextDefault,
+} from '../../contexts/SearchContext'
 
 const PokeContainer = () => {
     const dispatch = useAppDispatch()
 
-    const pokes = useAppSelector(selectPoke)
-    const pokeCards = useAppSelector(selectPokeCard)
+    const pokes: InitialState = useAppSelector(selectPoke)
+    const pokeCards: InitialStateCard = useAppSelector(selectPokeCard)
+    const { searchList } = useContext<SearchContextDefault>(SearchContext)
+
+    // if searchList not empty, it means that the user has searched
+    // so we need to set listPoke with the searchList
+    // opposite, the pokes.pokemon.results that we get from state reduxPoke is default
+    const listPoke: NameNUrl[] =
+        searchList.length > 0 ? searchList : pokes.pokemon.results
 
     const indexLastPoke = pokeCards.currentPage * pokeCards.pokePerPage
     const indexFirstPoke = indexLastPoke - pokeCards.pokePerPage
 
-    const itemsInPage = pokes.pokemon.results.slice(
-        indexFirstPoke,
-        indexLastPoke
-    )
+    const itemsInPage = listPoke.slice(indexFirstPoke, indexLastPoke)
 
     useEffect(() => {
         dispatch(getPoke())

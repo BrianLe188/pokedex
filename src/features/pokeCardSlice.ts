@@ -3,7 +3,7 @@ import { RootState } from '../app/store'
 import { Pokemon, NameNUrl } from '../types/types4poke'
 import axios from 'axios'
 
-interface InitialState {
+export interface InitialState {
     pokePerPage: number
     currentPage: number
     totalPage: number
