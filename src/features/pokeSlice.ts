@@ -38,17 +38,7 @@ const initialState: InitialState = {
 const pokeSlice = createSlice({
     name: 'poke',
     initialState,
-    reducers: {
-        /*searchPoke: (state, action: { payload: string; type: string }) => {
-            const filterPoke: NameNUrl[] = state.pokemon.results.filter(
-                (poke: NameNUrl) =>
-                    poke.name
-                        .toLowerCase()
-                        .includes(action.payload.toLowerCase())
-            )
-            state.pokemon = { ...state.pokemon, results: filterPoke }
-        },*/
-    },
+    reducers: {},
     extraReducers: builder => {
         builder
             // getPoke
