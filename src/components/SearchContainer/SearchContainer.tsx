@@ -1,15 +1,22 @@
 import React, { useContext } from 'react'
-import { useAppSelector } from '../../app/hooks'
 import { selectPoke, InitialState } from '../../features/pokeSlice'
+import {
+    selectPokeCard,
+    InitialState as InitialStateCard,
+    calculaTotalPage,
+} from '../../features/pokeCardSlice'
 import { Grid } from '@mui/material'
 import SearchField from '../SearchFeild/SearchFeild'
 import {
     SearchContext,
     SearchContextDefault,
 } from '../../contexts/SearchContext'
+import { useAppSelector, useAppDispatch } from '../../app/hooks'
 
 const SearchContainer = () => {
     const pokes: InitialState = useAppSelector(selectPoke)
+
+    const dispatch = useAppDispatch()
 
     const { handleSearch } = useContext<SearchContextDefault>(SearchContext)
 

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
-import { NameNUrl, PokemonApi } from '../types/types4poke'
+import { PokemonApi } from '../types/types4poke'
 import { Pokeapi } from '../apis/pokeapi'
 import axios from 'axios'
 

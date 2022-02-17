@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useLayoutEffect } from 'react'
 import SearchContainer from '../../components/SearchContainer/SearchContainer'
 import PokeContainer from '../../components/PokeContainer/PokeContainer'
 import PaginationComponent from '../../components/Pagination/Pagination'
@@ -22,13 +22,15 @@ const Home = () => {
     const { searchList } = useContext(SearchContext)
     const pokeCards: InitialStateCard = useAppSelector(selectPokeCard)
 
-    dispatch(
-        calculaTotalPage(
-            searchList.length > 0
-                ? searchList.length
-                : pokes.pokemon.results.length
+    useLayoutEffect(() => {
+        dispatch(
+            calculaTotalPage(
+                searchList.length > 0
+                    ? searchList.length
+                    : pokes.pokemon.results.length
+            )
         )
-    )
+    }, [])
 
     const handleChangePage = (page: number) => {
         dispatch(changeCurrentPage(page))
